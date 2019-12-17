@@ -1,0 +1,68 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+     <meta charset="utf-8">
+</head>
+<div class="row">
+    <div class="col-md-12">
+        <main role="main">
+            <section class="jumbotron text-center"
+                     style="background: url('../../content/images/hipster.png') no-repeat center fixed;height:400px;background-size: 1500px 800px;">
+                <div class="container">
+                    <h1 class="jumbotron-heading" style="text-shadow: 4px 2px gray;color: white"><B>Sama Hopital</B>
+                    </h1>
+                    <p style="font-size: 20px"><B>Bienvenue sur l'application de prise de rendez-vous dans les hopitaux
+                        publics</B></p>
+                </div>
+            </section>
+            <div class="album py-5 bg-light">
+                <div>
+                    <h3>Pour mieux vous accueillir, nous avons mis en place un systeme informatise de gestion des
+                        rendez-vous, qui vous permet de prendre rendez-vous par internet:</h3>
+                    <ul>
+                        <li>Ce service vous permet de réduire le nombre de déplacements</li>
+                        <li>Ce service vous permet de réduire les frais liés aux déplacements</li>
+                        <li>Ce service vous garantie une optimisation de votre temps et de votre énergie</li>
+                    </ul>
+                    <div [ngSwitch]="isAuthenticated()">
+                        <div class="alert alert-success" *ngSwitchCase="true">
+                <span *ngIf="account" jhiTranslate="home.logged.message"
+                      translateValues="{username: '{{account.login}}'}"> Bienvenue "{{account.login}}". </span>
+                            <div [ngSwitch]="whoUser()">
+                                <div class="alert alert-success" *ngSwitchCase="true">
+                                    <h1>Visible</h1>
+                                </div>
+                                <div class="alert alert-success" *ngSwitchCase="false">
+                                    <h2>Hidden</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success" *ngSwitchCase="false">
+
+                            <a class="alert-link" (click)="login()">Se connecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div align="center" class="row text-center">
+            <div class="col-md-4">
+                <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
+                <p>Rocade Fann Bel-air<br> Senegal</p>
+
+            </div>
+
+            <div class="col-md-4">
+                <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
+                <p>33-836-52-58 <br> Mon - Fri, 8:00-17:00</p>
+            </div>
+
+            <div class="col-md-4">
+                <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i
+                    class="fa fa-envelope"></i></a>
+                <p>esmt@gmail.com <br> esmtsn@gmail.com</p>
+            </div>
+     		
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rendezvous">
+            <h2><span jhiTranslate="hopitalApp.rendezvous.detail.title">Rendezvous</span> {{rendezvous.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hopitalApp.rendezvous.description">Description</span></dt>
+                <dd>
+                    <span>{{rendezvous.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="hopitalApp.rendezvous.date">Date</span></dt>
+                <dd>
+                    <span>{{rendezvous.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="hopitalApp.rendezvous.user">User</span></dt>
+                <dd>
+                    {{rendezvous.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rendezvous', rendezvous.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

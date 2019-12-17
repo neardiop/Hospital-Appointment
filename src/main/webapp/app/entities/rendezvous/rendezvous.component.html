@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="hopitalApp.rendezvous.home.title">Rendezvous</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rendezvous" [routerLink]="['/rendezvous/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="hopitalApp.rendezvous.home.createLabel">
+            Create new Rendezvous
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="rendezvous">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="hopitalApp.rendezvous.description">Description</span></th>
+            <th><span jhiTranslate="hopitalApp.rendezvous.date">Date</span></th>
+            <th><span jhiTranslate="hopitalApp.rendezvous.user">User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rendezvous of rendezvous ;trackBy: trackId">
+                <td><a [routerLink]="['/rendezvous', rendezvous.id, 'view' ]">{{rendezvous.id}}</a></td>
+                <td>{{rendezvous.description}}</td>
+                <td>{{rendezvous.date | date:'mediumDate'}}</td>
+                <td>
+                    {{rendezvous.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rendezvous', rendezvous.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rendezvous', rendezvous.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rendezvous/'+ rendezvous.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="consultation">
+            <h2><span jhiTranslate="hopitalApp.consultation.detail.title">Consultation</span> {{consultation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="hopitalApp.consultation.prescription">Prescription</span></dt>
+                <dd>
+                    <span>{{consultation.prescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="hopitalApp.consultation.date">Date</span></dt>
+                <dd>
+                    <span>{{consultation.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="hopitalApp.consultation.user">User</span></dt>
+                <dd>
+                    {{consultation.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/consultation', consultation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
