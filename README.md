@@ -1,6 +1,10 @@
 # hopital
 This application was generated using JHipster 5.0.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v5.0.1](https://www.jhipster.tech/documentation-archive/v5.0.1).
 
+## Contributos
+1- Mamadou Mbow
+2- Ndiane Diop (Me)
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
